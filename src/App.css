@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  flex-direction: column;
+  font-family: "Roboto Mono", monospace;
+}
+
+.main-container::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.main-container h1 {
+  color: white;
+  font-weight: bold;
+  z-index: 2;
+}
+
+form.upload-img {
+  width: 488px;
+  height: 367px;
+  max-width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  box-shadow: 0 0 17px rgba(255, 255, 0, 0.541);
+  border: 1px solid rgba(255, 255, 0, 0.336);
+  transition: 0.3s ease;
+}
+
+form.upload-img:hover {
+  box-shadow: 0 0 25px darkgreen;
+  border-color: darkgreen;
+}
+
+form.upload-img img {
+  object-fit: contain;
+}
+
+label[for="post_img"] {
+  background-color: black;
+  opacity: 0.65;
+  box-shadow: 0 0 10px transparent;
+  padding: 15px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  z-index: 2;
+}
+
+form.upload-img:hover label[for="post_img"] {
+  opacity: 0.8;
+  box-shadow: 0 0 10px white;
+}
+label[for="post_img"]:hover {
+  transform: scale(1.1);
+}
