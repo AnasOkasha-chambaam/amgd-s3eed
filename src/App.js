@@ -1,10 +1,32 @@
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import background from "./imgs/background----.jpg";
 import formBackground from "./imgs/background--.png";
 import icon from "./imgs/camera-retro-solid.svg";
 
 function App() {
+  let [textToType] = useState("Plant Illness Detection");
+  let [typingEffect, setTypingEffect] = useState("");
+  let [index, setIndex] = useState(0);
+  function typeNext() {
+    // console.log(index);
+    if (index >= textToType.length) return true;
+    setTypingEffect(() => {
+      return `${typingEffect}${textToType[index]}`;
+    });
+    setIndex(() => {
+      return index + 1;
+    });
+  }
+
+  useEffect(() => {
+    if (index >= textToType.length) return;
+    const intervalId = setInterval(() => {
+      typeNext();
+    }, 50);
+    return () => clearInterval(intervalId);
+  }, [index]);
+
   return (
     <div
       className="main-container"
@@ -13,8 +35,11 @@ function App() {
         backgroundAttachment: "fixed",
       }}
     >
-      <h1>Plant Illness Detection</h1>
+      <h1>{typingEffect}</h1>
       <form
+        onClick={() => {
+          typeNext();
+        }}
         action=""
         className="upload-img"
         style={{
